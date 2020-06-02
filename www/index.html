@@ -1,17 +1,39 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="livbri">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="components/loader.js"></script>
+    <script src="components/angular.min.js"></script>
+
     <link rel="stylesheet" href="components/loader.css">
+    
+
     <link rel="stylesheet" href="css/style.css">
      <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/3732f07a5a.js" crossorigin="anonymous"></script> 
     <script>
+      const app = angular.module('livbri',[]);
+      app.controller('LoginController',function($scope){
+        
+        $scope.enviar = (usuario)=>{
+         
+          console.log(usuario.email)
+          console.log(usuario.senha)
+        }
+      });
     </script>
 </head>
 <body class="container">
+  <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active"><i class="fas fa-book-open"></i> Livbri</a>
+  </li>
+  
+</ul>
+
   <div class="row mt-5">
     <div class="col-12 mt-5">
       <div class="text-group">
@@ -19,16 +41,18 @@
       </div>
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-12">
+  <div class="row mt-5" ng-controller="LoginController">
+    <div class="col-10 offset-1 p-2">
       <div class="form-group">
-        <input type="email" class="form-control" placeholder="Insira seu email">
+        <input type="email" ng-model="usuario.email" class="form-control form-control-lg" placeholder="Insira seu email">
+         <small class="form-text text-muted">{{ usuario.email }}</small>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="Insira a senha">
+        <input type="password"  ng-model="usuario.senha" class="form-control form-control-lg" placeholder="Insira a senha">
+        <small class="form-text text-muted">{{usuario.senha}}</small>
       </div>
-      <div class="form-group text-center">
-        <button class="btn btn-dark">Enviar</button>
+      <div class="form-group text-center mt-5">
+        <button class="btn btn-dark btn-block btn-lg" ng-click="enviar(usuario)">Enviar</button>
       </div>
     </div>
   </div>

@@ -1,0 +1,1 @@
+## Repositorio para testar aplicações com cordova
